@@ -16,6 +16,7 @@
   "author": "Luiz Claudio Celestino Cardoso",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^12.5.1"
+    "discord.js": "^12.5.1",
+    "express": "^4.17.1"
   }
 }
