@@ -7,7 +7,7 @@ const bot = new Discord.Client();
 /* Esconde isso */
 const token = process.env.token;
 
-bot.login(token["key"]);
+bot.login(token);
 bot.on("ready", () => {
     console.log("Estou pronto!")
 })
