@@ -12,7 +12,8 @@ bot.on("ready", () => {
 
 bot.on("message", (msg) => {
     if(msg.content == "boas"){
-        msg.reply("Olá meu amigo!");
+        msg.reply("Olá meu amigos!");
+        console.log("Alguma resposta")
     }
 })
 
@@ -22,5 +23,5 @@ git init > inicia o repositorio
 heroku git: bot-app-name > inicia o bot na heroku
 git add . > envia os arquivos
 git commit -am "" > comita o codigo
-
+git push heroku main > envia o bot pra heroku
 */
