@@ -1,4 +1,4 @@
-app.listen(process.env.PORT || 5284);
+
 const Discord = require("discord.js");
 const fs = require('fs');
 const bot = new Discord.Client();
@@ -14,7 +14,7 @@ bot.on("ready", () => {
 
 bot.on("message", (msg) => {
     if(msg.content == "boas"){
-        msg.reply("Olá meu amigos!");
+        msg.reply("Olá meu amigo!");
         console.log("Alguma resposta")
     }
 })
