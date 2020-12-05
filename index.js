@@ -1,9 +1,11 @@
+app.listen(process.env.PORT || 5284);
 const Discord = require("discord.js");
 const fs = require('fs');
 const bot = new Discord.Client();
 
+
 /* Esconde isso */
-const token = require('./token.json');
+const token = process.env.token;
 
 bot.login(token["key"]);
 bot.on("ready", () => {
