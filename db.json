@@ -1,0 +1,12 @@
+{
+    "selling": [
+        {"item": "Voice Pack aleatorio",            "price": "8",   "cat": "voice"},
+        {"item": "Seção psicológica com Vetão",     "price": "10"},
+        {"item": "5 Minutos de pudim conversando",  "price": "20,55",  "cat": "voice"},
+        {"item": "10 Minutos de pudim conversando", "price": "35",  "cat": "voice"},
+        {"item": "30 Minutos de pudim conversando", "price": "90",  "cat": "voice"},
+        {"item": "Uma arte especifíca, sem cor, feita pela deusana", "price": "150"},
+        {"item": "Outra coisa que tenha ai",        "price": "200"}
+    ],
+    "leng": 7
+}

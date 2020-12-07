@@ -1,8 +1,9 @@
 const Discord = require("discord.js");
 const fs = require('fs');
-const bot = new Discord.Client();
+const db = require("./db.json");
+const client = new Discord.Client();
 
-const token = process.env.token;
+const token = process.env.token || require('./token.json').key;
 
 const express = require("express");
 const path = require("path");
@@ -16,16 +17,53 @@ express()
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
-bot.login(token);
-bot.on("ready", () => {
-    console.log("Estou pronto!")
+client.login(token);
+
+client.on("ready", () => {
+    console.log(`Bot foi iniciado! com um total de  ${client.users.cache.size} usuários, em ${client.guilds.cache.size} servidores.`);
+    client.user.setActivity(`Estou em ${client.guilds.cache.size} Servidores!`);
 })
 
-bot.on("message", (msg) => {
-    if(msg.content == "boas"){
-        msg.reply("Olá meu amigo!");
-        console.log("Alguma resposta")
+client.on("guildCreate", guild => {
+    console.log(`O Bot entrou no servidor: ${guild.name} (id: ${guild.id}) (pop: ${guild.memberCount}).`);
+    client.user.setActivity(`Estou em ${client.guild.size} Servidores!`);
+})
+
+client.on("guildDelete", guild => {
+    console.log(`O Bot saiu do servidor: ${guild.name} (id: ${guild.id}) (pop: ${guild.memberCount}).`);
+    client.user.setActivity(`Estou em ${client.guild.size} Servidores!`);
+})
+
+
+
+
+client.on("message", (msg) => {
+    if(msg.content.indexOf(".mall") == 0)
+        console.log(`chamada de <${msg.author.username}(${msg.author.discriminator})> as: ${new Date().toUTCString()} > (${msg.content})`);
+
+    if(msg.content == ".mall"){
+        msg.reply(`Olá, me parece que você precisa de ajuda...
+.mall see
+        `);
     }
+
+    if(msg.content == ".mall see"){
+        message = "";
+        db.selling.forEach(obj => {
+            var objPrice = obj.price;
+            if(objPrice.indexOf(",") == -1){
+                objPrice += ",00"
+            }
+            while(objPrice.length < db.leng){
+                objPrice = " " + objPrice;
+            }
+
+            message += `
+\`R$: ${objPrice} >\` **${obj.item}**`
+        });
+        msg.reply(`Verifique Nossa Disponibilidade!${message}`);
+    }
+
 })
 
 
