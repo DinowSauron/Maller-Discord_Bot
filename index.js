@@ -3,7 +3,7 @@ const fs = require('fs');
 const db = require("./db.json");
 const client = new Discord.Client();
 
-const token = process.env.token || require('./token.json').key;
+const token = process.env.token || require('./key.json').key;
 
 const express = require("express");
 const path = require("path");
@@ -26,18 +26,19 @@ client.on("ready", () => {
 
 client.on("guildCreate", guild => {
     console.log(`O Bot entrou no servidor: ${guild.name} (id: ${guild.id}) (pop: ${guild.memberCount}).`);
-    client.user.setActivity(`Estou em ${client.guild.size} Servidores!`);
+    client.user.setActivity(`Estou em ${client.guilds.cache.size} Servidores!`);
 })
 
 client.on("guildDelete", guild => {
     console.log(`O Bot saiu do servidor: ${guild.name} (id: ${guild.id}) (pop: ${guild.memberCount}).`);
-    client.user.setActivity(`Estou em ${client.guild.size} Servidores!`);
+    client.user.setActivity(`Estou em ${client.guilds.cache.size} Servidores!`);
 })
 
 
 
 
 client.on("message", (msg) => {
+
     if(msg.content.indexOf(".mall") == 0)
         console.log(`chamada de <${msg.author.username}(${msg.author.discriminator})> as: ${new Date().toUTCString()} > (${msg.content})`);
 
@@ -63,7 +64,7 @@ client.on("message", (msg) => {
         });
         msg.reply(`Verifique Nossa Disponibilidade!${message}`);
     }
-
+    
 })
 
 
